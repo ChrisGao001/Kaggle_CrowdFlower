@@ -43,7 +43,7 @@ sys.path.append("../")
 from param_config import config
 
 
-
+＃ 获取target在obs list中的位置索引
 def get_position_list(target, obs):
     """
         Get the list of positions of obs in target

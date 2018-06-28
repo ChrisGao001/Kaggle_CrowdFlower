@@ -27,6 +27,7 @@ from param_config import config
 ################
 ## Stop Words ##
 ################
+# nltk英文停用词表
 stopwords = nltk.corpus.stopwords.words("english")
 stopwords = set(stopwords)
 
@@ -34,6 +35,7 @@ stopwords = set(stopwords)
 ##############
 ## Stemming ##
 ##############
+＃ 提取词干
 if config.stemmer_type == "porter":
     english_stemmer = nltk.stem.PorterStemmer()
 elif config.stemmer_type == "snowball":

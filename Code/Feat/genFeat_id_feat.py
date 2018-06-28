@@ -22,7 +22,7 @@ from sklearn.preprocessing import LabelBinarizer
 sys.path.append("../")
 from param_config import config
 
-
+＃ 搜索词id onehot编码
 if __name__ == "__main__":
 
     ## config
