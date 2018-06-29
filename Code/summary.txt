@@ -1,0 +1,28 @@
+特征工程：
+genFeat_counting_feat.py
+1. Basic Counting Features
+   分词，提取词干，停用词处理        
+   a. Count of n-gram in query/title/description
+      unigram,bigram,trigram 
+   b. Count & Ratio of Digit in query/title/description
+      num_digit_term, num_digit_term / num_term
+   c. Count & Ratio of Unique n-gram in query/title/description
+      num_unique_term / num_term
+2. Intersect Counting Features (交集count)
+   1. Count & Ratio of a's n-gram in b's n-gram
+      count_of_obsname_gram_in_targetname / count_of_obsname_gram
+      以下两个只考虑targetname 为query
+      count_of_obsname_gram_in_targetname / count_of_targetname_gram
+      count_of_obsname_gram_in_targetname / count_of_target_gram_in_obsname 
+3. Intersect Position Features (交集位置特征）
+    统计a在b中的位置序列然后计算统计特征（min,mean,median,max,std）
+    1. Statistics of Positions of a's n-gram in b's n-gram
+    2. Statistics of Normalized Positions of a's n-gram in b's n-gram (归一化特征）
+       normalized_pos_of_obsname_gram_in_targetname_min = pos_of_obsname_gram_in_targetname_min / count_of_obsname_gram  
+ 
+--> 转化为list,然后用numpy进行统计 
+pos = list(df.apply(lambda x: get_position_list(x[target_name+"_"+gram], obs=x[obs_name+"_"+gram]), axis=1))
+## stats feat on pos
+df["pos_of_%s_%s_in_%s_min" % (obs_name, gram, target_name)] = map(np.min, pos)
+
+    
